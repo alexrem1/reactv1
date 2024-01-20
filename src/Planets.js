@@ -12,14 +12,11 @@ function Planets() {
   return (
     <div className="App">
       {planetsArray.map((planet, key) => {
-        return (
-          planet.isGasPlanet && (
-            <h1 key={key}>{planet.name + " is a Gas planet"}</h1>
-          )
+        return planet.isGasPlanet ? (
+          <h1 key={key}>{planet.name + " is a Gas planet"}</h1>
+        ) : (
+          <h1 key={key}>{planet.name + " isn't a gas planet"} </h1>
         );
-        //  : (
-        //   <Planets name={planet.name + " isn't a gas planet"} />
-        // );
       })}
     </div>
   );

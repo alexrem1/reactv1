@@ -7,10 +7,10 @@ export const LifecycleTextComponent = (props) => {
   //if you want to excute an action only once when the component mounts, array must be empty [] eg mounted lifecycle
   //if you want to trigger an action when a specific state changes/many different states changes put state inside eg [text] eg updating lifecycle
   useEffect(() => {
-    console.log("component mounted");
+    alert("component mounted");
 
     return () => {
-      console.log("component unmounted");
+      alert("component unmounted");
     };
   }, []);
 

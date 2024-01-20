@@ -29,6 +29,7 @@ function FetchExample() {
 
   return (
     <div className="App">
+      <p>Fetch Example</p>
       <button onClick={fetchCatFact}>Generate Cat Fact</button>
       <p>{catfact}</p>
     </div>

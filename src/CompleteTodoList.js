@@ -66,7 +66,7 @@ function CompleteTodoList() {
   };
   return (
     <div style={{ marginBottom: "40px" }} className="App">
-      <h1 className="green">To Do list 2</h1>
+      <h1 className="green">Complete To Do list 2</h1>
       <CompleteTodoListAddTask
         handleInputChange={handleInputChange}
         addTask={addTask}

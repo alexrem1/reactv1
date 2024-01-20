@@ -5,6 +5,7 @@ function Array() {
 
   return (
     <div className="App">
+      <h1>Array example</h1>
       {names.map((value, key) => {
         return <p key={key}>{value}</p>;
       })}

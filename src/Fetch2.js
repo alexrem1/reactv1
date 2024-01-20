@@ -15,8 +15,8 @@ function FetchExample2() {
 
   return (
     <div className="App">
-      <br />
-      <br />
+      <p>Fetch Example 2</p>
+
       {/* "?" access if not null  */}
       <h1>Name: {predictedAge?.name}</h1>
       <h1>Count: {predictedAge?.count}</h1>
@@ -27,9 +27,7 @@ function FetchExample2() {
           setName(event.target.value);
         }}
       />
-      <button disabled={!predictedAge?.name} onClick={fetchData}>
-        Predict Age
-      </button>
+      <button onClick={fetchData}>Predict Age</button>
     </div>
   );
 }
