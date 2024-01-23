@@ -1,37 +1,39 @@
 import axios from "axios";
 import "./App.css";
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 
-//js way
-fetch("https://catfact.ninja/fact")
-  .then((res) => res.json())
-  .then((data) => {
-    console.log(data);
-  });
+// //js way
+// fetch("https://catfact.ninja/fact")
+//   .then((res) => res.json())
+//   .then((data) => {
+//     console.log(data);
+//   });
 
 function FetchExample() {
-  const [catfact, setCatfact] = useState("");
+  const {
+    data: catFact,
+    isLoading,
+    isError,
+    refetch,
+  } = useQuery({
+    queryKey: ["cat"],
+    queryFn: async () =>
+      (await axios.get("https://catfact.ninja/fact")).data.fact,
+  });
 
-  const fetchCatFact = () => {
-    axios.get("https://catfact.ninja/fact").then((res) => {
-      // console.log(res.data);
-      setCatfact(res.data.fact);
-    });
-  };
+  if (isError) {
+    return <h1>error</h1>;
+  }
 
-  // this way fetches data twice
-  useEffect(() => {
-    fetchCatFact();
-    // return () => {
-    //   second
-    // }
-  }, []);
+  if (isLoading) {
+    return <h1>Loading...</h1>;
+  }
 
   return (
     <div className="App">
       <p>Fetch Example</p>
-      <button onClick={fetchCatFact}>Generate Cat Fact</button>
-      <p>{catfact}</p>
+      <button onClick={() => refetch()}>Generate Cat Fact</button>
+      <p>{catFact}</p>
     </div>
   );
 }

@@ -25,7 +25,14 @@ function State() {
   return (
     <div style={{ marginBottom: "50px" }} className="App">
       <br />
-      <button onClick={increase}>Increase </button>
+      <button
+        onClick={() => {
+          increase();
+          setTextColor(textColor === "blue" ? "red" : "blue");
+        }}
+      >
+        Increase{" "}
+      </button>
       <button onClick={decrease}>Decrease </button>
       <button onClick={setToZero}>Set to Zero </button>
       <h1 style={{ color: textColor }}>{number}</h1>

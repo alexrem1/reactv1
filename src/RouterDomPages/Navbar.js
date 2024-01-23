@@ -6,7 +6,21 @@ export const Navbar = () => {
       <h1>NAVBAR (Router example)</h1>
       <Link to="/">Fetch (Home)</Link>
       <br />
-      <Link to="/useParams"> useParams</Link>
+      <Link to="/useParams"> useParams + useNaigate</Link>
+      <br />
+      <Link to="/useReducer"> useReducer</Link>
+      <br />
+      <Link to="/useRef"> useRef</Link>
+      <br />
+      <Link to="/useLayoutEffect"> useLayoutEffect</Link>
+      <br />
+      <Link to="/UseImperativeHandle"> UseImperativeHandle</Link>
+      <br />
+      <Link to="/useContext"> useContext</Link>
+      <br />
+      <Link to="/useMemo"> useMemo</Link>
+      <br />
+      <Link to="/useCallback"> useCallback</Link>
       <br />
       <Link to="/FetchExample2">Fetch 2</Link>
       <br />
