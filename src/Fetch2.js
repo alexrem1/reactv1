@@ -8,16 +8,31 @@ function FetchExample2() {
 
   const inputRef = useRef();
 
+  const fetchData = async () => {
+    try {
+      const res = await axios.get(`https://api.agify.io/?name=${name}`);
+      return res.data;
+      //or
+      // return axios
+      //   .get(`https://api.agify.io/?name=${name}`)
+      //   .then((res) => res.data);
+    } catch (error) {
+      throw error;
+    }
+  };
+
   const {
     data: predictedAge,
     isLoading,
     isError,
     refetch,
   } = useQuery({
-    queryKey: ["cat"],
-    queryFn: async () =>
-      (await axios.get(`https://api.agify.io/?name=${name}`)).data,
+    queryKey: ["predictedAge"],
+    queryFn: fetchData,
+    enabled: false, // disable automatic query execution
   });
+
+  console.log(predictedAge);
 
   if (isError) {
     return <h1>error</h1>;
@@ -31,10 +46,16 @@ function FetchExample2() {
     <div className="App">
       <p>Fetch Example 2</p>
 
-      {/* "?" access if not null  */}
-      <h1>Name: {predictedAge.name}</h1>
-      <h1>Count: {predictedAge.count === 0 ? "" : predictedAge.count}</h1>
-      <h1>Predicted Age: {predictedAge.age}</h1>
+      {/* "?" access if not null */}
+      {predictedAge ? (
+        <>
+          <h1>Name: {String(predictedAge?.name)}</h1>
+          <h1>Count: {predictedAge?.count}</h1>
+          <h1>Predicted Age: {predictedAge?.age}</h1>
+        </>
+      ) : (
+        <p>No data available</p>
+      )}
       <input
         ref={inputRef}
         placeholder="Ex. Alex..."

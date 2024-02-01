@@ -24,6 +24,10 @@ export const Navbar = () => {
       <br />
       <Link to="/FetchExample2">Fetch 2</Link>
       <br />
+      <Link to="/ReactHookForm">React Hook Form</Link>
+      <br />
+      <Link to="/CustomHook">Custom Hook</Link>
+      <br />
       <Link to="/CompleteTodoList">Complete Todo List</Link>
       <br />
       <Link to="/Array">Array</Link>

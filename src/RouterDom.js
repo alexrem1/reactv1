@@ -22,6 +22,8 @@ import UseContext from "./UseContext";
 import UseMemo from "./UseMemo";
 import UseCallbackExample from "./UseCallback";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import ReactHookForm from "./ReactHookForm";
+import CustomHook from "./CustomHook";
 
 function RouterDom() {
   const client = new QueryClient({
@@ -53,6 +55,8 @@ function RouterDom() {
             <Route path="/useMemo" element={<UseMemo />} />
             <Route path="/useCallback" element={<UseCallbackExample />} />
             <Route path="/FetchExample2" element={<FetchExample2 />} />
+            <Route path="/ReactHookForm" element={<ReactHookForm />} />
+            <Route path="/CustomHook" element={<CustomHook />} />
             <Route path="/CompleteTodoList" element={<CompleteTodoList />} />
             <Route path="/Array" element={<Array />} />
             <Route path="/TailWind" element={<TailWindCSS />} />

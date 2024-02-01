@@ -1,6 +1,7 @@
 import axios from "axios";
 import "./App.css";
 import { useQuery } from "@tanstack/react-query";
+import { useGetCat } from "./FetchHook";
 
 // //js way
 // fetch("https://catfact.ninja/fact")
@@ -10,30 +11,19 @@ import { useQuery } from "@tanstack/react-query";
 //   });
 
 function FetchExample() {
-  const {
-    data: catFact,
-    isLoading,
-    isError,
-    refetch,
-  } = useQuery({
-    queryKey: ["cat"],
-    queryFn: async () =>
-      (await axios.get("https://catfact.ninja/fact")).data.fact,
-  });
+  const { catFact, refetchData, isLoading, isError } = useGetCat();
 
-  if (isError) {
-    return <h1>error</h1>;
-  }
+  // if (isError) return;
 
-  if (isLoading) {
-    return <h1>Loading...</h1>;
-  }
+  // if (isLoading) return <h1>Loading...</h1>;
 
   return (
     <div className="App">
       <p>Fetch Example</p>
-      <button onClick={() => refetch()}>Generate Cat Fact</button>
-      <p>{catFact}</p>
+      {isLoading && <h1>Loading...</h1>}
+      {isError && <h1>Error...</h1>}
+      <button onClick={refetchData}>Generate Cat Fact</button>
+      {catFact ? <p>{catFact}</p> : <p>Trying to get data</p>}
     </div>
   );
 }
